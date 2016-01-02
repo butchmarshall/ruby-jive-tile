@@ -24,6 +24,7 @@ Or install it yourself as:
 then run
 
 ```ruby
+rails generate jive:add_on:active_record
 rails generate jive:tile:active_record
 ```
 
