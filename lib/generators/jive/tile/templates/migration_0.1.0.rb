@@ -3,6 +3,7 @@ class AddJiveTiles010Migration < ActiveRecord::Migration
 		create_table :jive_tiles do |t|
 			t.integer :jive_add_on_id
 
+			t.integer :tile_id
 			t.string :code
 			t.text :config
 			t.string :guid
@@ -25,7 +26,8 @@ class AddJiveTiles010Migration < ActiveRecord::Migration
 		create_table :jive_tiles_oauth_tokens do |t|
 			t.string :scope
 			t.string :token_type
-			t.string :expires_in
+			t.integer :expires_in
+			t.timestamp :expires_at
 			t.string :refresh_token
 			t.string :access_token
 
