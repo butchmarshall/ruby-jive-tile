@@ -22,6 +22,7 @@ Gem::Specification.new do |spec|
 
 	# Tiles require association with an AddOn
 	spec.add_dependency "jive-add_on"
+	spec.add_dependency "jive-oauth_token"
 
 	if RUBY_PLATFORM == 'java'
 		spec.add_development_dependency "jdbc-sqlite3", "> 0"

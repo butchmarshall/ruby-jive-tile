@@ -3,7 +3,7 @@ module Jive
 		class Model < ActiveRecord::Base
 			self.table_name = :jive_tiles
 			belongs_to :add_on, :class_name => "Jive::AddOn::Model", :foreign_key => :jive_add_on_id
-			belongs_to :oauth_token, :class_name => "Jive::Tile::OAuthToken", :foreign_key => :jive_tiles_oauth_token_id
+			has_one :oauth_token, :class_name => "Jive::OauthToken::Model", :as => :owner
 			serialize :config, Hash
 
 			after_create :fetch_oauth_token
@@ -13,6 +13,8 @@ module Jive
 					require "open-uri"
 					require "net/http"
 					require "openssl"
+
+					return if self.add_on.nil?
 
 					uri = URI.parse("#{self.add_on.jive_url}/oauth2/token")
 					http = Net::HTTP.new(uri.host, uri.port)
@@ -35,8 +37,8 @@ module Jive
 						json_body = JSON.parse(response.body)
 
 						# Create
-						Jive::Tile::OauthToken.create(
-							:tile => self,
+						Jive::OauthToken::Model.create(
+							:owner => self,
 							:scope => json_body["scope"],
 							:token_type => json_body["token_type"],
 							:expires_in => json_body["expires_in"],
