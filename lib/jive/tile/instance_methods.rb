@@ -1,12 +1,9 @@
 module Jive
-	module Tile
-		class Model < ActiveRecord::Base
-			self.table_name = :jive_tiles
-			belongs_to :add_on, :class_name => "Jive::AddOn::Model", :foreign_key => :jive_add_on_id
-			has_one :oauth_token, :class_name => "Jive::OauthToken::Model", :as => :owner
-			serialize :config, Hash
-
-			after_create :fetch_oauth_token
+	class Tile < ActiveRecord::Base
+		module InstanceMethods
+			def self.included(base)
+				base.table_name = "jive_tiles"
+			end
 
 			private
 				def fetch_oauth_token
@@ -37,7 +34,7 @@ module Jive
 						json_body = JSON.parse(response.body)
 
 						# Create
-						Jive::OauthToken::Model.create(
+						Jive::OauthToken.create(
 							:owner => self,
 							:scope => json_body["scope"],
 							:token_type => json_body["token_type"],

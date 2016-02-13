@@ -5,7 +5,7 @@ require "rails/generators/active_record"
 
 # Extend the HasDynamicColumnsGenerator so that it creates an AR migration
 module Jive
-	module Tile
+	class Tile < ActiveRecord::Base
 		class ActiveRecordGenerator < ::Jive::Tile::Generator
 			include Rails::Generators::Migration
 			extend NextMigrationVersion

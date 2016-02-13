@@ -33,7 +33,7 @@ rails generate jive:tile:active_record
 To the ActiveRecord model:
 
 ```ruby
-Jive::Tile::Model.new(...)
+Jive::Tile.new(...)
 ```
 
 ## Contributing

@@ -1,7 +1,7 @@
 require 'jive/tile/version'
 
 module Jive
-	module Tile
+	class Tile < ActiveRecord::Base
 		module Compatibility
 			if ActiveSupport::VERSION::MAJOR >= 4
 				require 'active_support/proxy_object'

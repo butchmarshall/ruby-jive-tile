@@ -1,5 +1,7 @@
+require "active_record"
+
 module Jive
-	module Tile
-		VERSION = "0.0.7"
+	class Tile < ActiveRecord::Base
+		VERSION = "0.0.8"
 	end
 end

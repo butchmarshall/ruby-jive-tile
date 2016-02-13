@@ -8,12 +8,16 @@ require "jive/tile/add_on/class_methods"
 
 require "jive/tile/version"
 require "jive/tile/compatibility"
-require "jive/tile/model"
+require "jive/tile/class_methods"
+require "jive/tile/instance_methods"
 
 module Jive
-	module Tile
+	class Tile < ActiveRecord::Base
 	end
 end
 
+Jive::Tile.send :include, Jive::Tile::InstanceMethods
+Jive::Tile.send :extend, Jive::Tile::ClassMethods
+
 # We want add-ons to know they can now associate with Tiles
-Jive::AddOn::Model.send :include, Jive::Tile::AddOn::Model::ClassMethods
+Jive::AddOn.send :include, Jive::Tile::AddOn::ClassMethods
