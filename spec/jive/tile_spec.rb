@@ -39,7 +39,7 @@ describe Jive::Tile do
 	describe "#create", :focus => true do
 		it 'should exchange code for oauth token' do
 			token_response = {"scope"=>"myscope", "token_type"=>"bearer", "expires_in"=>17000, "refresh_token"=>"j3kj2kj2k3jk2j3", "access_token"=>"jkjasdkljfsd"}
-			
+
 			stub_request(:post, "https://2zm4rzr9aiuvd4zhhg8kyfep229p2gce.i:evaqjrbfyu70jlvnap8fhnj2h5mr4vus.s@sandbox.jiveon.com/oauth2/token").
 				with(:body => {"client_id"=>"2zm4rzr9aiuvd4zhhg8kyfep229p2gce.i", "code"=>"o33xm85tfxe4n4vk4lw5gwvcjwkdcp4d.c", "grant_type"=>"authorization_code"},
               :headers => {'Accept'=>'*/*', 'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'Content-Type'=>'application/x-www-form-urlencoded', 'User-Agent'=>'Ruby'}).
@@ -49,7 +49,7 @@ describe Jive::Tile do
 			tile.add_on = @add_on
 			tile.save
 
-			expect(tile.oauth_token).not_to be nil
+			expect(tile.oauth_token).not_to eq nil
 			token_response.each_pair { |k,v|
 				expect(tile.oauth_token.send(k)).to eq(v)
 			}

@@ -1,16 +1,16 @@
-[![Gem Version](https://badge.fury.io/rb/jive-tile.svg)](http://badge.fury.io/rb/jive-tile)
-[![Build Status](https://travis-ci.org/butchmarshall/ruby-jive-tile.svg?branch=master)](https://travis-ci.org/butchmarshall/ruby-jive-tile)
+[![Gem Version](https://badge.fury.io/rb/jive-webhook.svg)](http://badge.fury.io/rb/jive-webhook)
+[![Build Status](https://travis-ci.org/butchmarshall/ruby-jive-webhook.svg?branch=master)](https://travis-ci.org/butchmarshall/ruby-jive-webhook)
 
-# Jive::Tile
+# Jive::Webhook
 
-An implemention of Jives Tiles using ActiveRecord.
+An implemention of Jives Webhook functionality using ActiveRecord.
 
 ## Installation
 
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'jive-tile'
+gem 'jive-webhook'
 ```
 
 And then execute:
@@ -19,7 +19,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install jive-tile
+    $ gem install jive-webhook
 
 then run
 
@@ -33,12 +33,12 @@ rails generate jive:tile:active_record
 To the ActiveRecord model:
 
 ```ruby
-Jive::Tile.new(...)
+Jive::Webhook.new(...)
 ```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/butchmarshall/ruby-jive-tile.
+Bug reports and pull requests are welcome on GitHub at https://github.com/butchmarshall/ruby-jive-webhook.
 
 
 ## License

@@ -34,8 +34,9 @@ module Jive
 						json_body = JSON.parse(response.body)
 
 						# Create
-						Jive::OauthToken.create(
+						oauth_token = Jive::OauthToken.create(
 							:owner => self,
+							:add_on => self.add_on,
 							:scope => json_body["scope"],
 							:token_type => json_body["token_type"],
 							:expires_in => json_body["expires_in"],
